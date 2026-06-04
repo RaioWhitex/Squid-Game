@@ -1,0 +1,157 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:      #e8c96a;
+  --card:    #d4930a;
+  --dark:    #5a3200;
+  --radius:  18px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+/* ════════════════════════
+   CENA 3D
+════════════════════════ */
+.scene {
+  width: 420px;
+  height: 240px;
+  perspective: 1000px;
+}
+
+/* ════════════════════════
+   CARTÃO
+════════════════════════ */
+.card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+/* Gira quando checkbox marcado */
+#flip-toggle:checked ~ .scene .card {
+  transform: rotateY(180deg);
+}
+
+/* ════════════════════════
+   FACES
+════════════════════════ */
+.face {
+  position: absolute;
+  inset: 0;
+  background: var(--card);
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(90, 50, 0, 0.18);
+}
+
+/* Verso começa girado */
+.back {
+  transform: rotateY(180deg);
+}
+
+/* ════════════════════════
+   FRENTE — formas
+════════════════════════ */
+.front {
+  gap: 32px;
+}
+
+.shape {
+  border: 4px solid var(--dark);
+}
+
+/* Círculo */
+.circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+}
+
+/* Triângulo (feito com clip-path) */
+.triangle {
+  width: 68px;
+  height: 64px;
+  border: none;
+  background: transparent;
+  position: relative;
+}
+
+.triangle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Triângulo vazado com dois triangles sobrepostos */
+  background: var(--dark);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.triangle::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  right: 9px;
+  bottom: 4px;
+  background: var(--card);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Quadrado */
+.square {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+/* ════════════════════════
+   VERSO — telefone
+════════════════════════ */
+.phone-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Ícone de casinha com borda circular */
+.phone-icon {
+  width: 52px;
+  height: 52px;
+  border: 3px solid var(--dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.phone-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.phone-number {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.04em;
+}

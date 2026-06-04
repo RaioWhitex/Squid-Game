@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Squid Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Checkbox controla o flip via CSS puro -->
+  <input type="checkbox" id="flip-toggle" hidden/>
+
+  <div class="scene">
+    <label for="flip-toggle" class="card">
+
+      <!-- Frente: 3 formas -->
+      <div class="face front">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape square"></div>
+      </div>
+
+      <!-- Verso: número de telefone -->
+      <div class="face back">
+        <div class="phone-info">
+          <div class="phone-icon">
+            <!-- Ícone de casa (casinha) SVG inline -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10.5z" stroke="#5a3200" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 22V12h6v10" stroke="#5a3200" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="phone-number">11 93391-4350</span>
+        </div>
+      </div>
+
+    </label>
+  </div>
+
+</body>
+</html>
